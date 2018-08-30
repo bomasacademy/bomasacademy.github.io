@@ -1,0 +1,109 @@
+---
+layout: default
+---
+
+
+
+<section class = 'clean-block clean-blog-list dark'>
+  <h1 class="blogheader colwith text-center">Blog</h1>
+ 
+
+  <div class = 'container'>
+
+        
+              <!-- post list -->
+                      
+                        {% for post in paginator.posts %}
+                            
+                            <ul class="posts para">
+                            <li class = 'postlist'>
+                              <a href="{{post.url | prepend: site.baseurl}}"><h2 class="posttitlehead">{{post.title}}</h2></a>
+          <div class= 'row'>
+                       
+                        <div class = 'col-lg-4'>
+                         {% assign foundImage = 0 %}
+                      {% assign images = post.content | split:"<img " %}
+                      {% for image in images %}
+                        {% if image contains 'src' %}
+
+                          {% if foundImage == 0 %}
+                            {% assign html = image | split:"/>" | first %}
+                            {% assign tags = html | split:" " %}
+                            {% for tag in tags %}
+                            {% if tag contains 'src' %}
+                                <img {{ tag }}  />
+                            {% endif %}
+                            {% endfor %}
+                            {% assign foundImage = 1 %}
+                        {% endif %}
+                    {% endif %}
+
+                  {% endfor %}
+                       </div>
+                
+                        <div class = 'col-lg-7'>
+                            
+                                        
+                                         <p class="postdate"> <span><i class="fa fa-calendar"></i></span>{{ post.date | date_to_long_string }} <span class="mix"><i class="fa fa-comment-o"></i><a href="{{ post.url }}#disqus_thread" class = 'commente'>Comments</a></span></p>
+                                         
+
+                 
+                         
+<p class="para">{{ post.excerpt | strip_html}}</p><br/>
+    {% if post.content contains site.excerpt_separator %}
+      <a href="{{ site.baseurl }}{{ post.url }}" class = 'readmore'>Read more</a>
+    {% endif %}        
+                      
+                        </div>
+                    
+             
+                    </div>
+             
+            </li>
+
+                </ul>
+
+              
+                               
+            {% endfor %}
+               
+
+                     </div>
+                    
+
+               
+                
+     
+</section>
+
+ <!-- pagination -->
+                        
+                        {% if paginator.total_pages > 1 %}
+                        <div class="pagination text-center"> 
+                          {% if paginator.previous_page %}
+                            <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
+                          {% else %}
+                            <span>&laquo; Prev</span>
+                          {% endif %}
+
+                          {% for page in (1..paginator.total_pages) %}
+                            {% if page == paginator.page %}
+                              <span>{{ page }}</span>
+                            {% elsif page == 1 %}
+                              <a href="/">{{ page }}</a>
+                            {% else %}
+                              <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                            {% endif %}
+                          {% endfor %}
+
+                          {% if paginator.next_page %}
+                            <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
+                          {% else %}
+                            <span>Next &raquo;</span>
+                          {% endif %}
+                        </div>
+                        {% endif %}
+                        
+
+
+       {% include footer.html %} 

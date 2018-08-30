@@ -1,0 +1,28 @@
+---
+title: Bomas Academy - Inspiring Learning For Greatness
+timezone: Africa/Algiers
+collections:
+  posts:
+    title: Posts
+    output: true
+  uploads:
+    title: Uploads
+    output: true
+markdown: kramdown
+permalink: "blog/:categories/:year/:month/:day/:title"
+plugins: 
+  - jekyll-paginate
+  - jekyll-sitemap
+paginate: 6
+excerpt_separator: "<!--excerpt-->"
+paginate_path: "/blog/page:num/"
+published: true
+disqus-shortname: bomasacademy
+exclude:
+- README.markdown
+- package.json
+- grunt.js
+- Gruntfile.js
+- Gruntfile.coffee
+- node_modules
+

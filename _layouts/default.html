@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+  
+<meta content="your_facebook_app_id" property="fb:app_id">
+<meta content="{{ site.title }}" property="og:site_name">
+{% if page.title %}
+  <meta content="{{ page.title }}" property="og:title">
+{% else %}
+  <meta content="{{ site.title }}" property="og:title">
+{% endif %}
+{% if page.title %}
+  <meta content="article" property="og:type">
+{% else %}
+  <meta content="website" property="og:type">
+{% endif %}
+{% if page.description %}
+  <meta content="{{ page.description }}" property="og:description">
+{% else %}
+  <meta content="{{ site.description }}" property="og:description">
+{% endif %}
+{% if page.url %}
+  <meta content="{{ site.url }}{{ page.url }}" property="og:url">
+{% endif %}
+{% if page.date %}
+  <meta content="{{ page.date | date_to_xmlschema }}" property="article:published_time">
+  <meta content="{{ site.url }}/about/" property="article:author">
+{% endif %}
+{% if page.image %}
+  <meta content="{{ page.image }}" property="og:image">
+{% else %}
+  <meta content="{{site.baseurl}}/assets/img/field-trip/easter-52.jpg" property="og:image">
+{% endif %}
+{% if page.categories %}
+  {% for category in page.categories limit:1 %}
+  <meta content="{{ category }}" property="article:section">
+  {% endfor %}
+{% endif %}
+{% if page.tags %}
+  {% for tag in page.tags %}
+  <meta content="{{ tag }}" property="article:tag">
+  {% endfor %}
+{% endif %}
+
+
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="{%if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+    <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    <meta name="twitter:creator" content="@bomasacademy">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:image" content="{%if page.image %}{{ page.image }}{% else %}{{ site.image}}{% endif %}" />
+
+    <meta name="description" content="Bomas Academy is a private co-educational institution which offers quality education to children from ages (2-12) Pre-Nursery to Primary.">
+   
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>
+       {%if page.title %}
+           {{ page.title }}
+       {% else %}
+           {{ site.title }}
+       {% endif %}
+    </title>
+    <link rel="canonical" href="{{ page.url | prepend: site.url }}">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/fonts/material-icons.min.css">
+    <link rel="stylesheet" href="{{site.baseurl}}/assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/css/lightbox.min.css">
+    
+</head>
+
+<body class= 'container-fluid'>
+
+    <nav class="navbar navbar-light navbar-expand-sm fixed-top navbar">
+        <div class="container-fluid">
+
+            <a class="navbar-brand" href="/"> <img class="img-fluid logo" src="{{site.baseurl}}/assets/img/Capture.PNG" alt="Bomas Academy Logo"></a>
+            <div class="nav-socials">
+            <a href="https://web.facebook.com/bomasacademy/" target="_blank"><i class="fa fa-facebook smbutton2"></i>
+                </a>
+                <a href="https://twitter.com/bomasacademy" target="_blank"><i class="fa fa-twitter smbutton2"></i>
+                </a>
+                <a href="https://www.instagram.com/bomasacademy/" target="_blank"><i class="fa fa-instagram smbutton2"></i></a>
+                <a href="https://www.youtube.com/channel/UCzCvBd5tz2fYPScNrC_XUHQ" target="_blank"><i class="fa fa-youtube-play smbutton2"></i>
+                </a>
+            </div>
+            <button class="navbar-toggler" data-toggle="collapse"
+                data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span>MENU</span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link navlink" href="/">HOME </a></li>
+                    <li class="dropdown"><a class="dropdown-toggle nav-link navlink" data-toggle="dropdown" aria-expanded="false" href="/about">ABOUT US</a>
+                        <div class="dropdown-menu" role="menu"><a class="dropdown-item" role="presentation" href="/about#vision">Our Vision</a><a class="dropdown-item" role="presentation" href="/about#mission">Our Mission</a><a class="dropdown-item" role="presentation" href="/about#corevalues">Core Values</a>
+                            <a
+                                class="dropdown-item" role="presentation" href="/about#staff">Our Staff</a><a class="dropdown-item" role="presentation" href="/about#curriculum">School Curriculum</a><a class="dropdown-item" role="presentation" href="/about#governingbody">The Governing Body</a></div>
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link navlink" href="/gallery">GALLERY </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link navlink" href="/blog">BLOG </a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link navlink" href="/contact">CONTACT </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    {{content}}
+
+    <script src="{{site.baseurl}}/assets/js/jquery.min.js"></script>
+    <script src="{{site.baseurl}}/assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="{{site.baseurl}}/assets/js/bs-animation.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.1.1/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.8.2/js/lightbox.min.js"></script>
+    <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
+    <script src="{{site.baseurl}}/assets/js/script.js"></script>
+   
+</body>
+
+</html>

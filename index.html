@@ -1,0 +1,170 @@
+---
+layout: default
+---
+
+    <div id="promo">
+        <h1 data-aos="fade-down" data-aos-duration="700" data-aos-once="true" class="divheader whitepara hero-header">Welcome to <br>Bomas Academy!</h1>
+        <p data-aos="fade-down" data-aos-duration="1150" class="hero-subtitle">......inspiring learning for greatness </p><a class="btn btn-primary btn-lg button" role="button" href="/about" data-aos="fade-down" data-aos-duration="1900">Learn more</a>
+    </div>
+    
+    <section class="upcoming" id="upcoming">
+                          <h2 class="divheader">Upcoming Events </h2>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-10 col-md-8 col-lg-8 col-xl-8 offset-xl-4 offset-lg-4 offset-md-2 offset-sm-1">
+                  <ul class = 'upcoming-list'>
+                    <li> 23 June 2018 - Third Term Resumption </li>
+                    <li> 27 May 2018 - Children's Day Celebration </li>
+                    <li> 29 May 2018 - Democracy Day </li>
+                  </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="registration">
+        <h3 class="divheader">Registration for the 2018/2019 session is in progress! </h3><a class="btn btn-primary btn-lg button call" role="button" href="tel:+2348036058313"><i class="material-icons" id="call">phone</i>Make Inquiries</a><a class="btn btn-primary btn-lg button mailbox" role="button" href="mailto:bomasacademy@gmail.com"><i class="material-icons" id="mailbox">email</i>Make Inquiries</a>
+    </section>
+    <section class="handbook" id="handbook">
+        <div class="container-fluid newslettercontainer">
+            <div class="row">
+                <div class="col-lg-8 col-xl-8 offset-lg-2 offset-xl-2" data-aos="fade-down" data-aos-duration="800">
+                    <h2 class="divheader handbookheader">Bomas Academy Handbook&nbsp; </h2>
+                    <p class="para whitepara">Receive Insight into the&nbsp;core values, vision and mission statements of Bomas Academy&nbsp;by signing up for a copy of the handbook. Take a look at our aims and objectives.&nbsp;</p>
+                </div>
+                <div class="col-8 col-sm-6 col-md-4 col-lg-4 col-xl-3 offset-2 offset-sm-3 offset-md-4 offset-lg-4 offset-xl-4 d-block" data-aos="fade-down" data-aos-duration="1200">
+                    <form action="" method="post"><input class="form-control" type="email" name="email1" placeholder="Email Address" inputmode="email" required><button class="btn btn-success btn-block button" type="submit">Sign Up</button></form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="curriculum">
+        <h1 class="divheader">School Curriculum</h1>
+        <div class="row">
+            <div class="col-10 col-sm-10 col-md-5 col-lg-6 col-xl-5 offset-1 offset-sm-1 offset-md-1 offset-lg-1 offset-xl-1">
+                <p class="para">Our rich curriculum; usually delivered to the level that, the individual child requires within each class include:<br></p>
+                <p class="para">Language and Literacy&nbsp;<br>Mathematics and Numeracy<br>Creative &amp; Cultural Art(Drama, Music, Art &amp; Design)&nbsp;<br>Religion &amp; National Values(Social Studies, Civic Education, Christian Religious Knowledge)&nbsp;<br></p>
+                <div class="buttondiv">
+                  <button
+                    class="btn btn-primary" type="button" id="morelink">MORE</button>
+                    <p id="hidden-curriculum" class="para">Basic Science &amp; Technology(Science, Physical Education, Computer Study)<br>Personal Development and Mutual Understanding.<br>A good range of after-school clubs<br>French lessons taught by a specialist teacher.&nbsp;<br></p>
+                    <button class="btn btn-primary" type="button" id="morelink2">HIDE</button>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5 col-xl-5 offset-xl-0"><img class="img-fluid curriculum-image" src="assets/img/Word Art (1).png" alt="Bomas Academy Curriculum"></div>
+        </div>
+    </section>
+    <section class="blog">
+        <h1 class="divheader">Latest From Our Blog</h1>
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                 
+                      
+                       <ul>
+
+      {% assign count = 0 %}
+      {% for post in site.posts %}
+        
+          {% assign count = count | plus:1 %}
+          
+          <li class = 'homelist'>
+            
+            <a href="{{ site.baseurl }}{{ post.url }}" class='hometitle'><h2 class="posttitlehome">{{post.title}}</h2></a>
+            <span class = 'homedate'>Posted on: {{ post.date | date_to_string }}</span> 
+
+            <div class = 'exp'>
+                 {% assign foundImage = 0 %}
+                {% assign images = post.content | split:"<img " %}
+                 {% for image in images %}
+                 {% if image contains 'src' %}
+
+                 {% if foundImage == 0 %}
+              {% assign html = image | split:"/>" | first %}
+              {% assign tags = html | split:" " %}
+              {% for tag in tags %}
+              {% if tag contains 'src' %}
+                  <img {{ tag }}  />
+              {% endif %}
+              {% endfor %}
+              {% assign foundImage = 1 %}
+          {% endif %}
+      {% endif %}
+
+    {% endfor %}
+    </div>
+           <p class="para">{{ post.excerpt | strip_html}}</p><br/>
+    {% if post.content contains site.excerpt_separator %}
+      <a href="{{ site.baseurl }}{{ post.url }}" class = 'readmore'>Read more</a><br><br>
+    {% endif %}
+  
+      
+          {% if count == 4 %}{% break %}
+          {% endif %}
+          
+      {% endfor %}
+         </li>
+        
+
+        
+    </ul>
+          </div>
+            
+        </div>
+      </div>
+    </section>
+   
+
+    <section class="photo-gallery">
+        <div class="container-fluid">
+            <div class="intro">
+                <h2 class="text-center divheader">Gallery</h2>
+            </div>
+            <div class="row photos">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-1.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-1.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-2.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-2.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-4.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-4.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-5.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-5.jpg"></a></div>
+            </div>
+            <div class="row photos hide-photos" id="home-hide-photos">
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-6.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-6.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-8.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-8.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/gallery-11.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/gallery-11.jpg"></a></div>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-3 item"><a href="{{site.baseurl}}/assets/img/first-step/first-step-8.jpg" data-lightbox="photos"><img class="img-fluid" src="{{site.baseurl}}/assets/img/first-step/first-step-8.jpg"></a></div>
+            </div>
+        </div>
+        <div class="buttondiv"><a class="btn btn-danger btn-lg button" role="button" href="/gallery">More</a></div>
+    </section>
+
+     <section class="twitter" id="twitter">
+       <h2 class="divheader text-center" data-aos="fade-down" data-aos-duration="800">Twitter Feed</h2>
+        <div class="container-fluid">
+            <div class="row">
+             
+                <div class="col-10 col-sm-10 col-md-8 col-lg-8 col-xl-8 offset-xl-3 offset-lg-3 offset-md-2 offset-sm-1 offset-1">
+                    
+                    <a class="twitter-timeline img-fluid" href="https://twitter.com/bomasacademy?ref_src=twsrc%5Etfw" data-tweet-limit = '3' data-width = '500' data-height = '300'>Tweets by bomasacademy</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+
+
+    </section>
+    
+     <section class = 'youtube-channel'>
+        <div class="container">
+            <h3 class="text-center divheader">Subscribe to Exciting Videos on our Youtube Channel</h3>
+            <div class="row">
+                <div class="col-12 col-sm-6">
+                    <div class="embed-responsive embed-responsive-4by3"><iframe width="560" height="315" src="https://www.youtube.com/embed/ilaTJyZSPbY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                </div>
+                <div class="col-12 col-sm-6">
+                    <div class="embed-responsive embed-responsive-4by3"><iframe width="560" height="315" src="https://www.youtube.com/embed/PzoQchlF0sI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                </div>
+            </div>
+        </div>
+        <a href="https://www.youtube.com/channel/UCzCvBd5tz2fYPScNrC_XUHQ" target="_blank"><button class="btn btn-danger" type="button" data-aos="fade-down" data-aos-duration="800" >check out our youtube channel</button></a>
+    </section>
+
+          {% include footer.html %} 
+    
+    
